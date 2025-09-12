@@ -65,6 +65,7 @@ const mockCartItems: CartItem[] = [
 
 function App() {
   const [activeTab, setActiveTab] = useState('history');
+  const [expandedTransaction, setExpandedTransaction] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<string>('all');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -422,14 +423,21 @@ function App() {
 
                   <div className="divide-y divide-gray-100">
                     {filteredTransactions.map((transaction, index) => (
-                      <div 
+                      <div
                         key={transaction.id}
-                        className="p-6 hover:bg-blue-50/50 transition-all duration-300 group cursor-pointer border-l-4 border-transparent hover:border-blue-500"
+                        className={`transition-all duration-300 group cursor-pointer border-l-4 ${
+                          expandedTransaction === transaction.id 
+                            ? 'border-blue-500 bg-blue-50/50' 
+                            : 'border-transparent hover:border-blue-500 hover:bg-blue-50/50'
+                        }`}
                         style={{ 
                           animation: `fadeInUp 0.6s ease-out ${index * 100}ms both`
                         }}
+                        onClick={() => setExpandedTransaction(
+                          expandedTransaction === transaction.id ? null : transaction.id
+                        )}
                       >
-                        <div className="flex items-center justify-between">
+                        <div className="p-6 flex items-center justify-between">
                           <div className="flex items-center space-x-4">
                             <div className="transform group-hover:scale-110 transition-transform duration-200">
                               {getProviderLogo(transaction.provider)}
@@ -457,9 +465,57 @@ function App() {
                               Succes
                             </span>
 
-                            <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:rotate-180 transition-all duration-300" />
+                            <ChevronDown className={`w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-all duration-300 ${
+                              expandedTransaction === transaction.id ? 'rotate-180 text-blue-600' : ''
+                            }`} />
                           </div>
                         </div>
+                        
+                        {/* Expanded Details */}
+                        {expandedTransaction === transaction.id && (
+                          <div className="px-6 pb-6 border-t border-gray-100 bg-gray-50/50">
+                            <div className="pt-4 space-y-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                  <p className="text-sm font-medium text-gray-700">ID Tranzacție</p>
+                                  <p className="text-sm text-gray-900 font-mono">L{transaction.id}357061</p>
+                                </div>
+                                <div>
+                                  <p className="text-sm font-medium text-gray-700">Data și ora</p>
+                                  <p className="text-sm text-gray-900">
+                                    {new Date(transaction.date).toLocaleDateString('ro-RO', {
+                                      year: 'numeric',
+                                      month: 'long',
+                                      day: 'numeric'
+                                    })}, {new Date(transaction.date).toLocaleTimeString('ro-RO', {
+                                      hour: '2-digit',
+                                      minute: '2-digit'
+                                    })}
+                                  </p>
+                                </div>
+                                <div>
+                                  <p className="text-sm font-medium text-gray-700">Detalii</p>
+                                  <p className="text-sm text-gray-900 font-mono">11305813</p>
+                                </div>
+                                <div>
+                                  <p className="text-sm font-medium text-gray-700">Comision</p>
+                                  <p className="text-sm text-gray-900">0.00 MDL</p>
+                                </div>
+                              </div>
+                              
+                              <div className="flex flex-wrap gap-3 pt-2">
+                                <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg">
+                                  <Download className="w-4 h-4 inline mr-2" />
+                                  Descărcați factura
+                                </button>
+                                <button className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg">
+                                  <Plus className="w-4 h-4 inline mr-2" />
+                                  Plătește din nou
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
