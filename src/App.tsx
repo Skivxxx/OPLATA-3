@@ -208,14 +208,14 @@ function App() {
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
                   <span className="text-white font-bold text-lg">O</span>
                 </div>
-                <span className="ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                <span className="ml-3 text-base md:text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                   OPLATA.MD
                 </span>
               </div>
             </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="relative">
+
+            <div className="flex items-center space-x-2 md:space-x-4">
+              <div className="relative hidden md:block">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
@@ -223,22 +223,22 @@ function App() {
                   className="pl-10 pr-4 py-2 w-64 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50/50 text-sm"
                 />
               </div>
-              
+
               <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
-              
-              <div className="flex items-center space-x-3 pl-4 border-l border-gray-200">
+
+              <div className="flex items-center space-x-2 md:space-x-3 pl-2 md:pl-4 border-l border-gray-200">
                 <div className="w-8 h-8 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full flex items-center justify-center">
                   <User className="w-4 h-4 text-gray-600" />
                 </div>
-                <div className="hidden sm:block">
+                <div className="hidden lg:block">
                   <span className="text-sm font-medium text-gray-700">Alexandra Poloasin</span>
                 </div>
               </div>
-              
-              <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
+
+              <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors hidden md:block">
                 <LogOut className="w-5 h-5" />
               </button>
             </div>
@@ -246,50 +246,50 @@ function App() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
           {/* Sidebar */}
-          <div className="w-72 flex-shrink-0">
+          <div className="w-full lg:w-72 flex-shrink-0">
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
               {/* User Profile */}
-              <div className="p-6 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-                <div className="flex items-center space-x-4">
-                  <div className="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm shadow-2xl border border-white/30">
-                    <User className="w-10 h-10 text-white drop-shadow-lg" />
+              <div className="p-4 md:p-6 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+                <div className="flex items-center space-x-3 md:space-x-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm shadow-2xl border border-white/30">
+                    <User className="w-8 h-8 md:w-10 md:h-10 text-white drop-shadow-lg" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Alexandra Poloasin</h3>
-                    <p className="text-blue-100 text-sm">alex@example.com</p>
+                    <h3 className="font-bold text-base md:text-lg">Alexandra Poloasin</h3>
+                    <p className="text-blue-100 text-xs md:text-sm">alex@example.com</p>
                   </div>
                 </div>
               </div>
 
               {/* Navigation */}
-              <nav className="p-4">
+              <nav className="p-3 md:p-4 grid grid-cols-2 lg:grid-cols-1 gap-2">
                 {sidebarItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 mb-2 ${
+                    className={`w-full flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 lg:mb-2 ${
                       activeTab === item.id
                         ? 'bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 shadow-md border border-blue-200'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm'
                     }`}
                   >
-                    <item.icon className={`w-5 h-5 ${activeTab === item.id ? 'text-blue-600' : 'text-gray-400'}`} />
-                    <span>{item.label}</span>
+                    <item.icon className={`w-4 h-4 md:w-5 md:h-5 flex-shrink-0 ${activeTab === item.id ? 'text-blue-600' : 'text-gray-400'}`} />
+                    <span className="truncate">{item.label}</span>
                   </button>
                 ))}
                 
                 {/* Logout Button */}
-                <button className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 mb-2 text-red-600 hover:bg-red-50 hover:text-red-700 hover:shadow-sm">
-                  <LogOut className="w-5 h-5 text-red-500" />
-                  <span>Ieșire</span>
+                <button className="w-full flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 lg:mb-2 text-red-600 hover:bg-red-50 hover:text-red-700 hover:shadow-sm col-span-2 lg:col-span-1">
+                  <LogOut className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0 text-red-500" />
+                  <span className="truncate">Ieșire</span>
                 </button>
               </nav>
 
               {/* Quick Actions */}
-              <div className="p-4 border-t border-gray-100">
+              <div className="p-3 md:p-4 border-t border-gray-100 hidden lg:block">
                 <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Быстрые действия</h4>
                 <div className="space-y-2">
                   <button className="w-full flex items-center space-x-3 px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-200">
@@ -310,28 +310,28 @@ function App() {
             {activeTab === 'history' && (
               <>
                 {/* Page Header */}
-                <div className="mb-8">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <div className="mb-4 md:mb-8">
+                  <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                     Istoricul plăților
                   </h1>
-                  <p className="text-gray-600 mt-2 text-lg">
+                  <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
                     Din acest meniu poți vedea istoricul tranzacțiilor, descărca factura sau repeta plata.
                   </p>
                 </div>
 
                 {/* Filters Section */}
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 mb-8">
-                  <div className="p-6">
-                    <div className="flex flex-col lg:flex-row gap-6">
+                <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 mb-4 md:mb-8">
+                  <div className="p-4 md:p-6">
+                    <div className="flex flex-col md:flex-row gap-3 md:gap-6">
                       {/* Date Range */}
-                      <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-2 md:space-x-4 overflow-x-auto">
                         <div className="flex items-center space-x-2">
                           <Calendar className="w-5 h-5 text-gray-400" />
                           <input
                             type="date"
                             value={dateFrom}
                             onChange={(e) => setDateFrom(e.target.value)}
-                            className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white/80"
+                            className="px-2 md:px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs md:text-sm bg-white/80"
                           />
                         </div>
                         <span className="text-gray-400">—</span>
@@ -340,7 +340,7 @@ function App() {
                             type="date"
                             value={dateTo}
                             onChange={(e) => setDateTo(e.target.value)}
-                            className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white/80"
+                            className="px-2 md:px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs md:text-sm bg-white/80"
                           />
                         </div>
                       </div>
@@ -353,7 +353,7 @@ function App() {
                           placeholder="Поиск по услугам и провайдерам..."
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
-                          className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80"
+                          className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                         />
                       </div>
 
@@ -400,7 +400,7 @@ function App() {
                     </div>
 
                     {/* Filter Summary */}
-                    <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
+                    <div className="mt-3 md:mt-4 flex flex-col md:flex-row md:items-center md:justify-between text-xs md:text-sm text-gray-600 space-y-1 md:space-y-0">
                       <span>
                         Период: {new Date(dateFrom).toLocaleDateString('ru-RU')} - {new Date(dateTo).toLocaleDateString('ru-RU')}
                       </span>
@@ -411,12 +411,12 @@ function App() {
 
                 {/* Transactions List */}
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
-                  <div className="p-6 border-b border-gray-100">
+                  <div className="p-4 md:p-6 border-b border-gray-100">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-gray-900">История транзакций</h2>
-                      <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl">
-                        <Download className="w-4 h-4" />
-                        <span className="text-sm font-medium">Экспорт</span>
+                      <h2 className="text-base md:text-xl font-bold text-gray-900">История транзакций</h2>
+                      <button className="flex items-center space-x-1 md:space-x-2 px-3 md:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <Download className="w-3 h-3 md:w-4 md:h-4" />
+                        <span className="text-xs md:text-sm font-medium hidden md:inline">Экспорт</span>
                       </button>
                     </div>
                   </div>
@@ -437,31 +437,31 @@ function App() {
                           expandedTransaction === transaction.id ? null : transaction.id
                         )}
                       >
-                        <div className="p-6 flex items-center justify-between">
-                          <div className="flex items-center space-x-4">
+                        <div className="p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                          <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0 w-full">
                             <div className="transform group-hover:scale-110 transition-transform duration-200">
                               {getProviderLogo(transaction.provider)}
                             </div>
                             
-                            <div>
-                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                            <div className="min-w-0 flex-1">
+                              <h3 className="font-semibold text-sm md:text-base text-gray-900 group-hover:text-blue-700 transition-colors truncate">
                                 {transaction.service}
                               </h3>
-                              <p className="text-sm text-gray-600">{transaction.accountNumber}</p>
+                              <p className="text-xs md:text-sm text-gray-600 truncate">{transaction.accountNumber}</p>
                             </div>
                           </div>
 
-                          <div className="flex items-center space-x-6">
-                            <div className="text-right">
-                              <p className="font-bold text-lg text-gray-900 group-hover:text-blue-700 transition-colors">
+                          <div className="flex items-center space-x-3 md:space-x-6 w-full md:w-auto justify-between">
+                            <div className="text-left md:text-right">
+                              <p className="font-bold text-sm md:text-lg text-gray-900 group-hover:text-blue-700 transition-colors whitespace-nowrap">
                                 {transaction.amount.toFixed(2)} {transaction.currency}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-xs md:text-sm text-gray-500">
                                 {new Date(transaction.date).toLocaleDateString('ru-RU')}
                               </p>
                             </div>
-                            
-                            <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(transaction.status)}`}>
+
+                            <span className={`px-2 md:px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(transaction.status)}`}>
                               Succes
                             </span>
 
@@ -473,12 +473,12 @@ function App() {
                         
                         {/* Expanded Details */}
                         {expandedTransaction === transaction.id && (
-                          <div className="px-6 pb-6 border-t border-gray-100 bg-gray-50/50">
-                            <div className="pt-4 space-y-4">
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-100 bg-gray-50/50">
+                            <div className="pt-3 md:pt-4 space-y-3 md:space-y-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                                 <div>
-                                  <p className="text-sm font-medium text-gray-700">ID Tranzacție</p>
-                                  <p className="text-sm text-gray-900 font-mono">L{transaction.id}357061</p>
+                                  <p className="text-xs md:text-sm font-medium text-gray-700">ID Tranzacție</p>
+                                  <p className="text-xs md:text-sm text-gray-900 font-mono">L{transaction.id}357061</p>
                                 </div>
                                 <div>
                                   <p className="text-sm font-medium text-gray-700">Data și ora</p>
@@ -503,13 +503,13 @@ function App() {
                                 </div>
                               </div>
                               
-                              <div className="flex flex-wrap gap-3 pt-2">
-                                <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg">
-                                  <Download className="w-4 h-4 inline mr-2" />
+                              <div className="flex flex-col md:flex-row gap-2 md:gap-3 pt-2">
+                                <button className="px-3 md:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 text-xs md:text-sm font-medium shadow-md hover:shadow-lg">
+                                  <Download className="w-3 h-3 md:w-4 md:h-4 inline mr-1 md:mr-2" />
                                   Descărcați factura
                                 </button>
-                                <button className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-200 text-sm font-medium shadow-md hover:shadow-lg">
-                                  <Plus className="w-4 h-4 inline mr-2" />
+                                <button className="px-3 md:px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg hover:from-green-700 hover:to-green-800 transition-all duration-200 text-xs md:text-sm font-medium shadow-md hover:shadow-lg">
+                                  <Plus className="w-3 h-3 md:w-4 md:h-4 inline mr-1 md:mr-2" />
                                   Plătește din nou
                                 </button>
                               </div>
@@ -521,30 +521,30 @@ function App() {
                   </div>
 
                   {/* Pagination */}
-                  <div className="p-6 border-t border-gray-100 bg-gray-50/50">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm text-gray-700">
+                  <div className="p-4 md:p-6 border-t border-gray-100 bg-gray-50/50">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
+                      <p className="text-xs md:text-sm text-gray-700">
                         Total: <span className="font-semibold">{filteredTransactions.length}</span>
                       </p>
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm text-gray-600">Rânduri pe pagină:</span>
-                        <select className="px-3 py-1 border border-gray-200 rounded-lg text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <span className="text-xs md:text-sm text-gray-600">Rânduri pe pagină:</span>
+                        <select className="px-2 md:px-3 py-1 border border-gray-200 rounded-lg text-xs md:text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                           <option>10</option>
                           <option>25</option>
                           <option>50</option>
                         </select>
                       </div>
-                      <nav className="flex items-center space-x-2">
-                        <button className="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-200">
+                      <nav className="flex items-center space-x-1 md:space-x-2">
+                        <button className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-200">
                           ‹
                         </button>
-                        <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg text-sm font-medium shadow-md">
+                        <button className="px-3 md:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg text-xs md:text-sm font-medium shadow-md">
                           1
                         </button>
-                        <button className="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-200">
+                        <button className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-200">
                           2
                         </button>
-                        <button className="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-200">
+                        <button className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg text-xs md:text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-200">
                           ›
                         </button>
                       </nav>
@@ -557,25 +557,25 @@ function App() {
             {activeTab === 'cards' && (
               <>
                 {/* Cards Page Header */}
-                <div className="mb-8">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <div className="mb-4 md:mb-8">
+                  <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                     CARDURILE MELE
                   </h1>
-                  <p className="text-gray-600 mt-2 text-lg">
+                  <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
                     Gestionează-ți cardurile și alege cardul folosit implicit.
                   </p>
                 </div>
 
                 {/* Cards Section */}
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
-                  <div className="p-6 border-b border-gray-100">
-                    <h2 className="text-xl font-bold text-gray-900">Carduri bancare (2)</h2>
+                  <div className="p-4 md:p-6 border-b border-gray-100">
+                    <h2 className="text-base md:text-xl font-bold text-gray-900">Carduri bancare (2)</h2>
                   </div>
 
-                  <div className="p-6 space-y-4">
+                  <div className="p-4 md:p-6 space-y-3 md:space-y-4">
                     {savedCards.map((card) => (
-                      <div key={card.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:bg-blue-50/50 transition-all duration-200">
-                        <div className="flex items-center space-x-4">
+                      <div key={card.id} className="flex flex-col md:flex-row items-start md:items-center justify-between p-3 md:p-4 border border-gray-200 rounded-xl hover:bg-blue-50/50 transition-all duration-200 gap-3">
+                        <div className="flex items-center space-x-3 md:space-x-4 w-full md:w-auto">
                           <div className="flex items-center space-x-2">
                       <input
                               type="radio"
@@ -594,13 +594,13 @@ function App() {
                             </div>
                           </div>
                           
-                          <div>
-                            <p className="font-semibold text-gray-900">Mastercard {card.number}</p>
-                            <p className="text-sm text-gray-600">Expira {card.expiry}</p>
+                          <div className="flex-1">
+                            <p className="font-semibold text-sm md:text-base text-gray-900">Mastercard {card.number}</p>
+                            <p className="text-xs md:text-sm text-gray-600">Expira {card.expiry}</p>
                           </div>
                         </div>
-                        
-                        <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-gray-100">
+
+                        <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-gray-100 self-end md:self-auto">
                           <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
                             <span className="text-xs font-bold text-gray-600">Șterge</span>
                           </div>
@@ -615,51 +615,51 @@ function App() {
             {activeTab === 'cart' && (
               <>
                 {/* Cart Page Header */}
-                <div className="mb-8">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <div className="mb-4 md:mb-8">
+                  <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                     Coșul meu
                   </h1>
-                  <p className="text-gray-600 mt-2 text-lg">
+                  <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
                     Plătește mai multe facturi cu o singură plată. Primești o confirmare separată pentru fiecare factură în raport. În extrasul băncii va apărea o singură tranzacție comună.
                   </p>
                 </div>
 
                 {/* Cart Items */}
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
-                  <div className="p-6 border-b border-gray-100">
-                    <h2 className="text-xl font-bold text-gray-900">Facturi ({mockCartItems.length})</h2>
+                  <div className="p-4 md:p-6 border-b border-gray-100">
+                    <h2 className="text-base md:text-xl font-bold text-gray-900">Facturi ({mockCartItems.length})</h2>
                   </div>
 
                   <div className="divide-y divide-gray-100">
                     {mockCartItems.map((item, index) => (
-                      <div 
+                      <div
                         key={item.id}
-                        className="p-6 hover:bg-blue-50/50 transition-all duration-300 group cursor-pointer"
+                        className="p-4 md:p-6 hover:bg-blue-50/50 transition-all duration-300 group cursor-pointer"
                         style={{ 
                           animation: `fadeInUp 0.6s ease-out ${index * 100}ms both`
                         }}
                       >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-4">
-                            <div className="transform group-hover:scale-110 transition-transform duration-200">
+                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                          <div className="flex items-center space-x-3 md:space-x-4 flex-1 min-w-0 w-full">
+                            <div className="transform group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                               {getCartItemLogo(item.logo)}
                             </div>
-                            
-                            <div>
-                              <h3 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+
+                            <div className="min-w-0 flex-1">
+                              <h3 className="font-semibold text-sm md:text-base text-gray-900 group-hover:text-blue-700 transition-colors truncate">
                                 {item.service}
                               </h3>
-                              <p className="text-sm text-gray-600">{item.accountNumber}</p>
+                              <p className="text-xs md:text-sm text-gray-600 truncate">{item.accountNumber}</p>
                             </div>
                           </div>
 
-                          <div className="flex items-center space-x-6">
-                            <div className="text-right">
-                              <p className="font-bold text-lg text-gray-900 group-hover:text-blue-700 transition-colors">
+                          <div className="flex items-center space-x-3 md:space-x-6 w-full md:w-auto justify-between">
+                            <div className="text-left md:text-right">
+                              <p className="font-bold text-sm md:text-lg text-gray-900 group-hover:text-blue-700 transition-colors whitespace-nowrap">
                                 {item.amount.toFixed(2)} {item.currency}
                               </p>
                               {item.commission > 0 && (
-                                <p className="text-sm text-gray-500">
+                                <p className="text-xs md:text-sm text-gray-500">
                                   Comision: {item.commission.toFixed(2)} {item.currency}
                                 </p>
                               )}
@@ -677,19 +677,19 @@ function App() {
                   </div>
 
                   {/* Add More Button */}
-                  <div className="p-6 border-t border-gray-100 bg-gray-50/50">
-                    <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl">
+                  <div className="p-4 md:p-6 border-t border-gray-100 bg-gray-50/50">
+                    <button className="flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl w-full md:w-auto">
                       <Plus className="w-4 h-4" />
                       <span className="text-sm font-medium">Adaugă +</span>
                     </button>
                   </div>
 
                   {/* Billing Form and Cart Summary */}
-                  <div className="p-6 border-t border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="p-4 md:p-6 border-t border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                       {/* Billing Form */}
                       <div>
-                        <h3 className="text-sm font-semibold text-gray-700 mb-4">
+                        <h3 className="text-xs md:text-sm font-semibold text-gray-700 mb-3 md:mb-4">
                           Pentru prima plată cu coșul este necesar să completați datele
                         </h3>
                         <div className="space-y-3">
@@ -698,35 +698,35 @@ function App() {
                             placeholder="Numele complet (obligatoriu)"
                             value={billingForm.fullName}
                             onChange={(e) => handleFormChange('fullName', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                            className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                           />
                           <input
                             type="text"
                             placeholder="Țara (obligatoriu)"
                             value={billingForm.country}
                             onChange={(e) => handleFormChange('country', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                            className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                           />
                           <input
                             type="text"
                             placeholder="Orașul (obligatoriu)"
                             value={billingForm.city}
                             onChange={(e) => handleFormChange('city', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                            className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                           />
                           <input
                             type="text"
                             placeholder="Adresa (obligatoriu)"
                             value={billingForm.address}
                             onChange={(e) => handleFormChange('address', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                            className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                           />
                           <input
                             type="text"
                             placeholder="Zip"
                             value={billingForm.zip}
                             onChange={(e) => handleFormChange('zip', e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                            className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                           />
                         </div>
                       </div>
@@ -734,7 +734,7 @@ function App() {
                       {/* Cart Summary */}
                       <div>
                         <div className="space-y-3">
-                          <div className="flex justify-between text-sm">
+                          <div className="flex justify-between text-xs md:text-sm">
                             <span className="text-gray-600">Factură totală:</span>
                             <span className="font-semibold">{totalCartAmount.toFixed(2)} MDL</span>
                           </div>
@@ -748,9 +748,9 @@ function App() {
                               <span className="text-blue-700">{grandTotal.toFixed(2)} MDL</span>
                             </div>
                           </div>
-                          <button 
+                          <button
                             disabled={!isFormValid}
-                            className={`w-full mt-4 px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg ${
+                            className={`w-full mt-3 md:mt-4 px-4 md:px-6 py-2 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-200 shadow-lg ${
                               isFormValid 
                                 ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 hover:shadow-xl cursor-pointer' 
                                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -769,36 +769,36 @@ function App() {
             {activeTab === 'profile' && (
               <>
                 {/* Profile Page Header */}
-                <div className="mb-8">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <div className="mb-4 md:mb-8">
+                  <h1 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                     Contul meu
                   </h1>
-                  <p className="text-gray-600 mt-2 text-lg">
+                  <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-lg">
                     Aici poți schimba numele, parola și fotografia de profil.
                   </p>
                 </div>
 
                 {/* Profile Settings */}
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
-                  <div className="p-6 border-b border-gray-100">
-                    <h2 className="text-xl font-bold text-gray-900">Setări profil</h2>
+                  <div className="p-4 md:p-6 border-b border-gray-100">
+                    <h2 className="text-base md:text-xl font-bold text-gray-900">Setări profil</h2>
                   </div>
 
-                  <div className="p-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="p-4 md:p-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                       {/* Profile Photo Section */}
-                      <div className="space-y-6">
+                      <div className="space-y-4 md:space-y-6">
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900 mb-4">Fotografia de profil</h3>
-                          <div className="flex items-center space-x-6">
-                            <div className="w-24 h-24 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm shadow-2xl border border-gray-200">
-                              <User className="w-12 h-12 text-gray-400" />
+                          <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">Fotografia de profil</h3>
+                          <div className="flex flex-col md:flex-row items-center md:space-x-6 space-y-3 md:space-y-0">
+                            <div className="w-20 h-20 md:w-24 md:h-24 bg-white/20 rounded-3xl flex items-center justify-center backdrop-blur-sm shadow-2xl border border-gray-200">
+                              <User className="w-10 h-10 md:w-12 md:h-12 text-gray-400" />
                             </div>
-                            <div className="space-y-2">
-                              <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl text-sm font-medium">
+                            <div className="space-y-2 text-center md:text-left">
+                              <button className="px-3 md:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl text-xs md:text-sm font-medium">
                                 Încarcă fotografie
                               </button>
-                              <button className="block px-4 py-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                              <button className="block px-3 md:px-4 py-2 text-xs md:text-sm text-gray-600 hover:text-red-600 transition-colors">
                                 Șterge fotografia
                               </button>
                             </div>
@@ -807,25 +807,25 @@ function App() {
 
                         {/* Personal Information */}
                         <div>
-                          <h3 className="text-lg font-semibold text-gray-900 mb-4">Informații personale</h3>
+                          <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">Informații personale</h3>
                           <div className="space-y-4">
                             <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-2">Numele complet</label>
+                              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Numele complet</label>
                               <input
                                 type="text"
                                 value={profileForm.fullName}
                                 onChange={(e) => handleProfileFormChange('fullName', e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                                className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                                 placeholder="Introduceți numele complet"
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Email</label>
                               <input
                                 type="email"
                                 value={profileForm.email}
                                 onChange={(e) => handleProfileFormChange('email', e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                                className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                                 placeholder="Introduceți adresa de email"
                               />
                             </div>
@@ -835,45 +835,45 @@ function App() {
 
                       {/* Password Change Section */}
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Schimbă parola</h3>
+                        <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">Schimbă parola</h3>
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Parola curentă</label>
+                            <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Parola curentă</label>
                             <input
                               type="password"
                               value={profileForm.currentPassword}
                               onChange={(e) => handleProfileFormChange('currentPassword', e.target.value)}
-                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                              className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                               placeholder="Introduceți parola curentă"
                             />
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Parola nouă</label>
+                            <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Parola nouă</label>
                             <input
                               type="password"
                               value={profileForm.newPassword}
                               onChange={(e) => handleProfileFormChange('newPassword', e.target.value)}
-                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                              className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                               placeholder="Introduceți parola nouă"
                             />
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Confirmă parola nouă</label>
+                            <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">Confirmă parola nouă</label>
                             <input
                               type="password"
                               value={profileForm.confirmPassword}
                               onChange={(e) => handleProfileFormChange('confirmPassword', e.target.value)}
-                              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
+                              className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-sm"
                               placeholder="Confirmați parola nouă"
                             />
                           </div>
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="mt-8 space-y-3">
-                          <button 
+                        <div className="mt-6 md:mt-8 space-y-3">
+                          <button
                             disabled={!isProfileFormValid}
-                            className={`w-full px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg ${
+                            className={`w-full px-4 md:px-6 py-2 md:py-3 rounded-xl text-sm md:text-base font-semibold transition-all duration-200 shadow-lg ${
                               isProfileFormValid 
                                 ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 hover:shadow-xl cursor-pointer' 
                                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -881,7 +881,7 @@ function App() {
                           >
                             Salvează modificările
                           </button>
-                          <button className="w-full px-6 py-3 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-all duration-200 font-medium">
+                          <button className="w-full px-4 md:px-6 py-2 md:py-3 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-all duration-200 text-sm md:text-base font-medium">
                             Anulează
                           </button>
                         </div>
@@ -891,27 +891,27 @@ function App() {
                 </div>
 
                 {/* Security Settings */}
-                <div className="mt-8 bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
-                  <div className="p-6 border-b border-gray-100">
-                    <h2 className="text-xl font-bold text-gray-900">Securitate</h2>
+                <div className="mt-6 md:mt-8 bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
+                  <div className="p-4 md:p-6 border-b border-gray-100">
+                    <h2 className="text-base md:text-xl font-bold text-gray-900">Securitate</h2>
                   </div>
-                  <div className="p-6">
+                  <div className="p-4 md:p-6">
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 bg-blue-50/50 rounded-xl border border-blue-200/50">
+                      <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-3 md:p-4 bg-blue-50/50 rounded-xl border border-blue-200/50 gap-3">
                         <div>
-                          <h3 className="font-semibold text-gray-900">Autentificare în două etape</h3>
-                          <p className="text-sm text-gray-600">Protejează-ți contul cu un nivel suplimentar de securitate</p>
+                          <h3 className="font-semibold text-sm md:text-base text-gray-900">Autentificare în două etape</h3>
+                          <p className="text-xs md:text-sm text-gray-600">Protejează-ți contul cu un nivel suplimentar de securitate</p>
                         </div>
-                        <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 text-sm font-medium">
+                        <button className="px-3 md:px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 text-xs md:text-sm font-medium w-full md:w-auto">
                           Activează
                         </button>
                       </div>
-                      <div className="flex items-center justify-between p-4 bg-gray-50/50 rounded-xl border border-gray-200/50">
+                      <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-3 md:p-4 bg-gray-50/50 rounded-xl border border-gray-200/50 gap-3">
                         <div>
-                          <h3 className="font-semibold text-gray-900">Sesiuni active</h3>
-                          <p className="text-sm text-gray-600">Gestionează dispozitivele conectate la contul tău</p>
+                          <h3 className="font-semibold text-sm md:text-base text-gray-900">Sesiuni active</h3>
+                          <p className="text-xs md:text-sm text-gray-600">Gestionează dispozitivele conectate la contul tău</p>
                         </div>
-                        <button className="px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 text-sm font-medium">
+                        <button className="px-3 md:px-4 py-2 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 text-xs md:text-sm font-medium w-full md:w-auto">
                           Vezi sesiuni
                         </button>
                       </div>
